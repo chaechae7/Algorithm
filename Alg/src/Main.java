@@ -13,47 +13,74 @@ public class Main {
 //		String roNumber="VI";
 //		String roNumber="IX";
 //		String roNumber="XVI";
-		String roNumber="XXVI";
-		String roNumber2="XX";
+//		String roNumber="XXVI";
+//		String roNumber2="XX";
 //		String roNumber="IXX";//표기법에 어긋나는 수
 		
-		int num1 = Calculator(roNumber);
-		
-		System.out.print("사칙연산부호를 입력하세요.(*,+,-,/): ");
+
+		System.out.print("첫번째 수를 입력하세요 : ");
+		String conroma1 = sc.next().toUpperCase();
+		System.out.print("사칙연산자를 입력하세요 : ");
 		String cal = sc.next();
+		System.out.print("두번째 수를 입력하세요 : ");
+		String conroma2 = sc.next().toUpperCase();
 		
-		int num2 = Calculator(roNumber2);
+		int num1 = convertRoma(conroma1);
+		int num2 = convertRoma(conroma2);
 		
+		Calculator(num1, num2, cal);
 		
+	}
+		
+	private static void Calculator(int num1, int num2, String cal) {
+		
+		String result = "";
 		
 		switch (cal) {
-		case "*": convert(num1*num2);
-					
+		case "+":
+				if(1>num1+num2 && num1+num2<39)
+					System.out.println("범위를 벗어났습니다.");
+				else
+					result = toRoma(num1+num2);
 			break;
-		case "+": convert(num1+num2);
-		
+		case "*":
+				if(1>num1+num2 && num1+num2<39)
+					System.out.println("범위를 벗어났습니다.");
+				else
+					result = toRoma(num1*num2);
+			
 			break;
-		case "-": convert(num1-num2);
-		
+		case "/":
+				if(num1<num2) {
+					System.out.println("작은 수를 큰수로 나눌 수 없습니다.");
+				}
+				else {
+					result = toRoma(num1/num2);
+					result = toRoma(num1%num2);
+				}
+			
 			break;
-		case "/": convert(num1/num2);
-		
-			break;
-
-		default:
-			break;
+	
+			
 		}
 		
-		
-	}
-		
-	private static void convert(int i) {
-		
+		System.out.println(result);
 		
 		
 	}
 
-	private static int Calculator(String roNumber) {
+	private static String toRoma(int integer) {
+		
+		String[] RomaArr = {"I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX", "X"}; //46
+		
+		String toroma = "";
+		
+		
+		return toroma;
+		
+	}
+
+	private static int convertRoma(String roNumber) {
 		
 		Map<Character, Integer> roma = new HashMap<>();
 		
@@ -88,7 +115,6 @@ public class Main {
 			}
 		}
 		
-	
 		return normal_num;
 		
 	}
