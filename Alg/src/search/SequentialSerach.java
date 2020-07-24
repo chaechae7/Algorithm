@@ -28,7 +28,7 @@ public class SequentialSerach {
 			
 			if(array[i] == searchdata)
 				return i;
-		
+		 
 		
 		}
 		return -1;
